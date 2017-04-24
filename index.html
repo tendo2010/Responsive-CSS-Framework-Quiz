@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="orange darken-4" role="navigation">
+    <div class="container"><a id="logo-container" href="#" class="brand-logo"><i class="Tiny material-icons">person_pin</i>PSU Passpost</a>
+    </nav>
+
+    <br><br><br>
+
+    <div class="container">
+      <center><ul>Welcome to PSU Passpost</ul></center><br>
+      <form class="col s6">
+        <div class="container">
+          <div class="input-field col s6">
+            <input placeholder="Placeholder" id="username" type="text" class="validate">
+            <label for="first_name"><i class="Tiny material-icons">contacts</i>User Name</label>
+          </div>
+        </div>
+        <div class="container">
+          <div class="input-field col s6">
+            <input id="password" type="password" class="validate">
+            <label for="password"><i class="Tiny material-icons">vpn_key</i>Password</label>
+          </div>
+        </div><br>
+        <div class="container">
+          <center><a id="signin" class="waves-effect waves-light btn"><i class="material-icons right" id="signin">play_arrow</i>SIGN IN</a></center>
+        </div>
+      </form>
+    </div>
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript"> //sidebar menu for min-desktop
+    $("#signin").click(function() {
+      var username = $("#username").val();
+      var password = $("#password").val();
+      // console.log(username);
+      // console.log(password);
+      var url = "http://membershipwebapi977290.azurewebsites.net/api/members/signin?username=" + username + "&password=" + password;
+      $.get(url, function(data, status){
+        // console.log("URL : " + data);
+        console.log("Sign in :  " + data.Status);
+      });
+    });
+  </script>
+  </body>
+  </html>
